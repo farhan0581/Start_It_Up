@@ -21,4 +21,8 @@ for span in soup.findAll('li',{'class':'listing-wdt'}):
 	c1=company[0].get_text()
 	l1=location[0].get_text()
 	n1=number[0].get_text()
+	print p1+'\n'
 	f.write(p1+'\t\t'+c1+'\t\t'+l1+'\t\t'+n1+'\n')
+nurl='http://dir.indiamart.com/impcatProductPagination.php'
+data=requests.get(nurl)
+print data
