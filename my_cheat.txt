@@ -1,0 +1,64 @@
+which ports are listening??
+netstat -ntlp | grep LISTEN
+use curl for proper response--
+curl -i http://localhost:5000/todo/api/v1.0/tasks
+##starting elastic beans
+start->virtualenv -p python2.7 /tmp/eb_flask_app
+go to dir . /var/eb_test/bin/activate
+to run the app python application.py then check if it is working
+eb init
+eb create to start the service
+eb open to test
+eb terminate eb-flask-app-dev to stop the service
+environmaent name was eb-test-aws-dev
+req::
+pip install Flask
+pip install pymongo
+pip install flask-restful	
+
+#mongo import
+mongoimport -h ds045694.mongolab.com:45694 -d testk -c dish_tbl -u ketchuppuser -p ketchupp --file /home/farhan/Desktop/AWS/CyberHub-Final.csv --type csv --headerline
+
+#use in operator instead of or while condition to same field
+db.inventory.find( { type: { $in: [ 'food', 'snacks' ] } } )
+
+#syntax of and/or
+db.inventory.find(
+   {
+     type: 'food',
+     $or: [ { qty: { $gt: 100 } }, { price: { $lt: 9.95 } } ]
+   }
+)
+
+#including and excluding fields by using field:0 or 1
+
+db.inventory.find( { type: 'food' }, { item: 1, qty: 1, _id:0 } )
+
+#operators
+$lte less than equal ..$gte
+$lt less than ..$gt
+$ne not equal
+
+#updating values in a document
+db.mycol.update({'title':'MongoDB Overview'},{$set:{'title':'New MongoDB Tutorial'}})
+
+#delete
+db.table.remove(criteria,justOne=true)
+if justOne is true deletes only one document
+else if no criteria deletes all data like sql truncate
+
+#limit
+db.table.find({}).limit(NuMBER)
+
+#database
+use db
+create db if not present else return existing
+db
+show current db
+show dbs
+show db list
+
+#drop database
+db.dropDatabase()
+
+
