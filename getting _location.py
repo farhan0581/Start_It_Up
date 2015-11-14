@@ -3,6 +3,7 @@ from flask import Flask,jsonify
 from flask.ext import restful
 from flask.ext.restful import reqparse
 import requests
+from pushjack import GCMClient
 
 # info='https://maps.googleapis.com/maps/api/geocode/json?latlng=28.562126,%2077.281526&location_type=GEOMETRIC_CENTER&key=AIzaSyCD81KWvRb-3Vv38BVouOTwCWgwi3Lfl9Y'
 # # info='https://maps.googleapis.com/maps/api/geocode/json?latlng=28.624182,%2077.437847&location_type=GEOMETRIC_CENTER&key=AIzaSyCD81KWvRb-3Vv38BVouOTwCWgwi3Lfl9Y'
@@ -20,6 +21,10 @@ import requests
 
 app=Flask(__name__)
 api=restful.Api(app)
+#GCM_Client
+client = GCMClient(api_key = 'AIzaSyAhjC4roIPtvL9cwcSjjqlEVfgi94qvp0E')
+registration_id=['c1vU878e5Kc:APA91bGY4CEH00EUlgjuJcIHeMRmP8x6Bye6PNgBsTQ1SE_OnA05owpgj--8ukoYf5x5fa3AssZwuVYzS0eIQ-DUzGxZmUVr1hm125jhoZh4CZUqA41jV0Ji8mZMFql5g2hjTza2SLE8']
+data = {'the_message' : '231@_@2@_@0@_@Thanks for being part of Ketchupp!!@_@03/08/2015 15:00:06@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/profile_pic1.png@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/25a.jpg@_@http://www.fun54.com/wp-content/uploads/2011/08/beautiful-multi-colours-tortoise-wearing-a-blue-cap-saving-himself-with-rain-hd-wallpapers-1920-x-1200.jpg'}
 
 
 class my_api(restful.Resource):
@@ -61,7 +66,10 @@ class get_location(restful.Resource):
 			dat=requests.get(info)
 			data=dat.json()
 			# print '###################'
-			# print args['lat']
+			# print args['lat'
+			l1='Not Found'
+			l2='Not Found'
+			l3='Not Found'
 			tra=data["results"][0]["address_components"]
 			for count in range(len(tra)):
 				check=tra[count]["types"]
@@ -73,6 +81,15 @@ class get_location(restful.Resource):
 					l3=tra[count]["long_name"]
 
 			result={"locality_1":l1,"locality_2":l2,"locality_3":l3}
+			to_send='Locality-1:'+l1+' locality-2:'+l2+' locality-3:'+l3+'user id='+args['user_id']
+			data = {'the_message' : '245@_@1@_@0@_@'+str(to_send)+
+			'\@_@03/08/2015 15:00:06@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/profile_pic1.png@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/25a.jpg\
+			@_@http://www.fun54.com/wp-content/uploads/2011/08/beautiful-multi-colours-tortoise-wearing-a-blue-cap-saving-himself-with-rain-hd-wallpapers-1920-x-1200.jpg'}
+			res = client.send(registration_id,
+                  data,
+                  collapse_key='collapse_key',
+                  delay_while_idle=False,
+                  time_to_live=604800)
 			return jsonify({"result":result})
 					
 			# result={"lat":args['lat'],"long":args['long']}
