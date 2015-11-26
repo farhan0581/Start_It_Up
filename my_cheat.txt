@@ -70,41 +70,15 @@ db.name.drop()
 #insert document
 db.table.insert()
 
+#############################################################
 
-
-
-
-Hi Everyone...some good news for you...!!,
-There is a guy Abdul Khalid, an IIT Delhi & Aligarh Muslim University alumni,a technology enthusiast who had short stints with Housing.com, Olacabs and Amazon​ in the past​.​ He along with 2 other IIT Delhi and FMS graduates co-founded a startup known as Ketchupp. 
-
-About Ketchupp:
-Ketchupp, your dish advisor, is an interesting artificially intelligent technology which helps you discover Best Dishes nearby, in a restaurant/location etc. For instance, If you are at Connaught Place, Delhi, you can instantly find must have dishes of Connaught Place, that too cuisine wise. Or if you are sitting at say Soda Bottle Opener Wala restaurant (in Gurgaon), then Ketchupp App recommends you must have dishes of the restaurant instantly. These recommendations are based on feedback/recommendations/inputs from users across social media platforms, blogs and your trusted friend network. 
-
-Currently, they have few internship openings at Ketchupp, and this mail is regarding the same. if you are interested in joining them, then feel free to contact or drop him an email at abdul@ketchupp.in 
-
-Openings: 
- Data Analyst: 
-Good at Excel,
-Love Food
-Able to manage data.
-
- IOS developer:
-Have prior experience of developing IOS applications or willing to
-Willingness to learn new technologies
-Ability to write scalable code
-Knows about version controls(Github/BitBucket/etc)
-
- Android Developer:
-Must have prior experience of developing Android applications
-Willingness to learn new things
-Ability to write scalable code
-Knows about version controls(Github/BitBucket/etc)
-
- Backend developer: 
-If python is the ingredient you use for cooking your dish(code)
-Knows about Amazon Web services(AWS) or willing to learn AWS
-Ability to write scalable code
-Knows about version controls(Github/BitBucket/etc)
-
-And please...only serious candidates apply...
+hearustics algorithm for notification system:
+sending notification to the user when he is involved like
+1. during birthday his or friends 
+2.ocassions like valentines day and similar where they want to go out instead of staying inside home
+3.whenever the user enters the new place fot the first time
+4.notification regarding food fests
+5.special attention to weekdays
+6.special attention to his wishlist
+7.
 
