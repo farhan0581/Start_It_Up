@@ -32,7 +32,7 @@ data = {'the_message' : '231@_@2@_@0@_@Thanks for being part of Ketchupp!!@_@03/
 def send_note(res):
 	client = GCMClient(api_key = 'AIzaSyAhjC4roIPtvL9cwcSjjqlEVfgi94qvp0E')
 	registration_id=['c1vU878e5Kc:APA91bGY4CEH00EUlgjuJcIHeMRmP8x6Bye6PNgBsTQ1SE_OnA05owpgj--8ukoYf5x5fa3AssZwuVYzS0eIQ-DUzGxZmUVr1hm125jhoZh4CZUqA41jV0Ji8mZMFql5g2hjTza2SLE8']
-	data = {'the_message' : '267@_@1@_@0@_@'+ str(res) +'@_@03/08/2015 15:00:06@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/profile_pic1.png@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/25a.jpg@_@http://www.fun54.com/wp-content/uploads/2011/08/beautiful-multi-colours-tortoise-wearing-a-blue-cap-saving-himself-with-rain-hd-wallpapers-1920-x-1200.jpg'}
+	data = {'the_message' : '270@_@1@_@0@_@'+ str(res) +'@_@03/08/2015 15:00:06@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/profile_pic1.png@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/25a.jpg@_@http://www.fun54.com/wp-content/uploads/2011/08/beautiful-multi-colours-tortoise-wearing-a-blue-cap-saving-himself-with-rain-hd-wallpapers-1920-x-1200.jpg'}
 	res_ = client.send(registration_id,
                   data,
                   collapse_key='collapse_key',
@@ -122,8 +122,9 @@ class friends_list(restful.Resource):
 			for row in rows:
 				row_json=json.loads(row.get("user_friends"))
 				for rr in row_json:
-					result[rr['name']]=rr['id']
-
+					gcm_id=db.users_tbl.find({"fb_id":int(rr['id'])},{"GCM_ID":1,"_id":0})
+					for i in gcm_id:
+						result[rr['name']]=i['GCM_ID']
 
 			send_note(result)
 			result=jsonify({"result":result})
