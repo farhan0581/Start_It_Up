@@ -53,13 +53,12 @@ class friends_list(restful.Resource):
 			dbpassword="ketchupp"
 			db = conn[database]
 			db.authenticate(dbuser, dbpassword)
-			# gcm_id_list=["c5sXcnXtvTE:APA91bEZVRZNXyV_719yTppndc0RHzkbgo-Lvp9IRSE1ojJDumtaxFliUCg049oH7cxg5zbH1taqDCVmyJ6rEWdLvzcum3rmoPYuPYB4S4Xa1RRLsm54pqOToNftDufphN0IRpsd29SG",
-			# 				"eSWGmEgZRHM:APA91bEfE_Xe7RH6X0StNSc17AH6XwlP7fVg3Qoy4ynbu8lnSbIoiFeQaUSCLcCCT69Q7eiCHA6cjlt4EPHF9hkeHOjCbLx7iuu0VOyXTa26MrjITmy2NCpfMn8XKhrfeVHS830mvhas",
-			# 				"c1vU878e5Kc:APA91bGY4CEH00EUlgjuJcIHeMRmP8x6Bye6PNgBsTQ1SE_OnA05owpgj--8ukoYf5x5fa3AssZwuVYzS0eIQ-DUzGxZmUVr1hm125jhoZh4CZUqA41jV0Ji8mZMFql5g2hjTza2SLE8"
+			gcm_id_list=["c5sXcnXtvTE:APA91bEZVRZNXyV_719yTppndc0RHzkbgo-Lvp9IRSE1ojJDumtaxFliUCg049oH7cxg5zbH1taqDCVmyJ6rEWdLvzcum3rmoPYuPYB4S4Xa1RRLsm54pqOToNftDufphN0IRpsd29SG",
+							"eSWGmEgZRHM:APA91bEfE_Xe7RH6X0StNSc17AH6XwlP7fVg3Qoy4ynbu8lnSbIoiFeQaUSCLcCCT69Q7eiCHA6cjlt4EPHF9hkeHOjCbLx7iuu0VOyXTa26MrjITmy2NCpfMn8XKhrfeVHS830mvhas",
+							"c1vU878e5Kc:APA91bGY4CEH00EUlgjuJcIHeMRmP8x6Bye6PNgBsTQ1SE_OnA05owpgj--8ukoYf5x5fa3AssZwuVYzS0eIQ-DUzGxZmUVr1hm125jhoZh4CZUqA41jV0Ji8mZMFql5g2hjTza2SLE8"
 				
 			
-			#             ]
-			friend_list=[]
+			            ]
 			msg=args['message']
 
 			_id=args['ketchupp_id']
@@ -73,11 +72,11 @@ class friends_list(restful.Resource):
 						gcm_id=db.users_tbl.find({"fb_id":int(rr['id'])},{"GCM_ID":1,"_id":0})
 						for i in gcm_id:
 							result[rr['name']]=i['GCM_ID']
-							friend_list.append(i['GCM_ID'])
+							# gcm_id_list.append(i['GCM_ID'])
 
 
 
-				send_note(friend_list,msg)
+				send_note(gcm_id_list,msg)
 				result=jsonify({"result":result})
 				return result
 

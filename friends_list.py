@@ -18,12 +18,22 @@ db = conn["testk"]
 db.authenticate("ketchuppuser", "ketchupp")
 idd="31685c8a-78d9-11e5-89ec-026674f3c46b"
 # idd="a319df48-3b8a-11e5-b9ac-02c462edaa43"
+# idd="56e0b4ce-5f86-11e5-962a-0a58c3a68d31"
+
 # rows=db.users_tbl.find({"user_friends":{ "$ne" : ""},"ketchupp_id":idd},{"user_friends":1,"_id":0})
 ls=[]
 res={}
 c=0
 dd=""
-result=[]
+result={}
+gcm_id_list=[]
+
+# rows=db.users_tbl.find({"ketchupp_id":idd},{"GCM_ID":1})
+
+
+
+# for row in rows:
+# 	print row
 
 # for row in rows:
 # 	rr=json.loads(row.get("user_friends"))
@@ -41,6 +51,28 @@ result=[]
 # # 	a=row["user_friends"]
 
 
-rows=db.users_tbl.find({"ketchupp_id":idd},{"GCM_ID":1,"_id":0})
+# rows=db.users_tbl.find({"ketchupp_id":idd},{"GCM_ID":1,"_id":0})
+# for row in rows:
+# 	print row["GCM_ID"]
+
+rows=db.users_tbl.find({"user_friends":{ "$ne" : ""},"ketchupp_id":idd},{"user_friends":1})
 for row in rows:
-	print row["GCM_ID"]
+	row_json=json.loads(row.get("user_friends"))
+	for rr in row_json:
+		gcm_id=db.users_tbl.find({"fb_id":int(rr['id'])},{"GCM_ID":1,"_id":0})
+		for i in gcm_id:
+			result[rr['name']]=i['GCM_ID']
+			gcm_id_list.append(i['GCM_ID'])
+
+for i in range(len(gcm_id_list)):
+	print gcm_id_list[i]
+
+
+# def funct(par):
+# 	for i in range(len(par)):
+# 		print par[i]
+
+
+
+# test=['1','2']
+# funct(test)
