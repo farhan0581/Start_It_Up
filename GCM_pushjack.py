@@ -17,7 +17,8 @@ registration_id=['c1vU878e5Kc:APA91bGY4CEH00EUlgjuJcIHeMRmP8x6Bye6PNgBsTQ1SE_OnA
 #user_photo
 #banner = for pic to be displayed on notification
 alert = 'Hello world.'
-data = {'the_message' : '231@_@2@_@0@_@Thanks for being part of Ketchupp!!@_@03/08/2015 15:00:06@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/profile_pic1.png@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/25a.jpg@_@http://www.fun54.com/wp-content/uploads/2011/08/beautiful-multi-colours-tortoise-wearing-a-blue-cap-saving-himself-with-rain-hd-wallpapers-1920-x-1200.jpg'}
+data = {'the_message' : '231@_@2@_@0@_@Thanks for being part of Ketchupp!!@_@03/08/2015 15:00:06@_@\
+https://s3-us-west-2.amazonaws.com/imagesketchupp/profile_pic1.png@_@https://s3-us-west-2.amazonaws.com/imagesketchupp/25a.jpg@_@http://www.fun54.com/wp-content/uploads/2011/08/beautiful-multi-colours-tortoise-wearing-a-blue-cap-saving-himself-with-rain-hd-wallpapers-1920-x-1200.jpg'}
 #notification_id - unique for every notification and ever increasing
 # 11 for data update
 # 1, 0 - if 0 then no update and if 1 then update

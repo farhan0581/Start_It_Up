@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form for flask</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+</head>
+<body class="container">
+<h2>Notification Form</h2>
+  <div class="jumbotron col-lg-4">
+  
+	<form method="POST" action="data_form">
+		<input class="form-control" type="text" name="not_id" placeholder="Notification id">
+		<br>
+		<input class="form-control" type="text" name="mess_head" placeholder="Message heading">
+		<br>
+		<textarea class="form-control" type="text" name="mess" placeholder="Message body"></textarea>
+		<br>
+		<input class="form-control" type="text" name="banner_url" placeholder="Banner URL">
+		<br>
+		<input class="form-control" placeholder="Option 1" name="op1">
+		<br>
+		<input class="form-control" placeholder="Option 2" name="op2">
+		<br>
+		<b>Boolean for Option 3</b>
+		<select class="form-control" name="bool">
+			<option value="1">True</option>
+			<option value="0">False</option>
+		</select>
+		<br>
+		<input class="form-control" placeholder="Option 3" name="op3">
+		<br>
+		<b>Message type</b>
+		<select class="form-control" name="mess_type">
+			<option value="1">Type 1</option>
+			<option value="2">Type 2</option>
+		</select>
+		<br>
+		<b>Select receivers</b>
+		<select class="form-control" name="send_type">
+			<option value="0">Myself</option>
+			<option value="1">Testers</option>
+			<option value="2">All</option>
+		</select>
+		<br>
+		
+		<br>
+		<input class="btn btn-primary" type="submit" value="submit"> 
+	</form>
+   </div>
+
+</body>
+</html>
